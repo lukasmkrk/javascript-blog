@@ -24,19 +24,17 @@ for(let activeArticle of activeArticles){
   activeArticle.classList.remove('active');
 }
 
-  /* [IN PROGRESS] get 'href' attribute from the clicked link */
+  /* get 'href' attribute from the clicked link */
+  /* find the correct article using the selector (value of 'href' attribute) */
+  /* add class 'active' to the correct article */
 
   const articleSelector = clickedElement.getAttribute('href');
   const targetArticle = document.querySelector(articleSelector);
   targetArticle.classList.add('active');
   console.log('Link was clicked!')
-
-  /* find the correct article using the selector (value of 'href' attribute) */
-
-  /* add class 'active' to the correct article */
 }
 
-
+  /* for each article */
 
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
@@ -44,10 +42,7 @@ const optArticleSelector = '.post',
 
 function generateTitleLinks(){
 
-  /* remove contents of titleList */
 
-  /* for each article */
-debugger
   const articles = document.querySelectorAll('.posts .post');
 
   let html = '';
