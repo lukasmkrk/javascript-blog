@@ -74,27 +74,41 @@ generateTitleLinks();
 function generateTags(){
   /* find all articles */
 
-  const articles = article.querySelectorAll('.post-tags .list list-horizontal');
+  const articles = document.querySelectorAll('.post-tags .list list-horizontal');
 
   /* START LOOP: for every article: */
-
-  let html = '';
 
   for(let article of articles){
 
     /* find tags wrapper */
 
-    const titleList = document.querySelector(optArticleTagsSelector)
+    const optArticleTagsSelector = article.querySelector(optArticleTagsSelector);
 
     /* make html variable with empty string */
 
+      let html = '';
+
     /* get tags from data-tags attribute */
 
+    const articleSelector = article.getAttribute('data-tags');
+    const targetArticle = document.querySelector(articleSelector);
+    targetArticle.classList.add('active');
+    const data-tags = 'articleTags'
+    console.log('article')
+
     /* split tags into array */
+
+    const articleTagsArray = articleTags.split(' ');
+
 }
     /* START LOOP: for each tag */
 
+    for(let tag of articleTagsArray){
+
       /* generate HTML of the link */
+
+      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      html = html + linkHTML;
 
       /* add generated code to html variable */
 
