@@ -192,15 +192,16 @@ function generateAuthors() {
 
 }
 
-generateAuthors();
+function generateAuthors() {
+  const articles = document.querySelectorAll(optArticleSelector);
 
-function addClickListenersToAuthors() {
+  for (let article of articles) {
+    const authorWrapper = article.querySelector(optArticleAuthorSelector);
+    const articleAuthor = article.getAttribute('data-author');
+    const linkHTML = 'by ' + '<a href="#by' + articleAuthor + '">' + articleAuthor + '</a>';
 
-    const linksAuthor = document.querySelectorAll('.list.authors a')
-    for (let link of linksAuthor) {
-
-        link.addEventListener('click', authorClickHandler);
-    }
+    authorWrapper.innerHTML = linkHTML;
+  }
 }
 
 addClickListenersToAuthors();
