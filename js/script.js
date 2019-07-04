@@ -207,23 +207,26 @@ function generateAuthors() {
 addClickListenersToAuthors();
 
 function authorClickHandler(event) {
+  event.preventDefault();
+  debugger;
 
-    event.preventDefault();
+  const clickedElement = this;
+  const href = clickedElement.getAttribute('href');
 
-    const clickedElement = this;
+  const author = href.replace('#by', '');
 
-    const href = clickedElement.getAttribute('href');
+  // const author = href.replace('#by', '');
+  const activeLinks = document.querySelectorAll('a.active[href^="#by"]');
 
-    const author = href.replace('#by', '');
+  for (let activeAuthorLink of activeLinks) {
+    activeAuthorLink.classList.remove('active');
+  }
 
-    const authorLinks = document.querySelectorAll('a.active[href^="#by-"]');
+  const equalAuthorLinks = document.querySelectorAll('a[href="' + href + '"]');
 
-    for (let activeAuthorLink of authorLinks) {
-        activeAuthorLink.classList.remove('active');
-    }
-    const equalAuthorLinks = document.querySelectorAll('a[href="' + href + '"]');
+  for (let foundAuthorLink of equalAuthorLinks) {
+    foundAuthorLink.classList.add('active');
+  }
 
-    for (let foundAuthorLink of equalAuthorLinks) {
-        foundAuthorLink.classList.add('active');
-    }
+  generateTitleLinks(`[data-author="${author}"]`);
 }
