@@ -44,7 +44,6 @@ const optArticleSelector = '.post',
 
 function generateTitleLinks(customSelector = '') {
 
-
     const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
     let html = '';
@@ -120,9 +119,6 @@ function generateTags() {
 
 generateTags();
 
-
-
-
 function tagClickHandler(event) {
 
     /* prevent default action for this event */
@@ -179,8 +175,6 @@ function tagClickHandler(event) {
 
 }
 
-
-
 function addClickListenersToTags() {
 
     /* find all links to tags */
@@ -200,9 +194,6 @@ function addClickListenersToTags() {
 }
 
 addClickListenersToTags();
-
-
-
 
 function generateAuthors() {
 
@@ -230,7 +221,6 @@ function generateAuthors() {
 
 }
 
-
 generateAuthors();
 
 function addClickListenersToAuthors() {
@@ -256,12 +246,12 @@ function authorClickHandler(event) {
 
     const authorLinks = document.querySelectorAll('a.active[href^="#by-"]');
 
-    for(let activeAuthorLink of authorLinks){
-       activeAuthorLink.classList.remove('active');
-     }
-     const equalAuthorLinks = document.querySelectorAll('a[href="' + href + '"]');
+    for (let activeAuthorLink of authorLinks) {
+        activeAuthorLink.classList.remove('active');
+    }
+    const equalAuthorLinks = document.querySelectorAll('a[href="' + href + '"]');
 
-     for(let foundAuthorLink of equalAuthorLinks){
-       foundAuthorLink.classList.add('active');
- }
+    for (let foundAuthorLink of equalAuthorLinks) {
+        foundAuthorLink.classList.add('active');
+    }
 }
