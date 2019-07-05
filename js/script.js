@@ -81,12 +81,32 @@ function generateTags() {
       const linkHTML = '<a href="#tag-' + tag + '">' + tag + '</a>, ';
       /* add generated code to html variable */
       html = html + linkHTML;
+      /* [NEW] check if this link is NOT already in allTags */
+     if (!allTags.hasOwnProperty(tag)) {
+       /* [NEW] add generated code to allTags array */
+       allTags[tag] = 1;
+     } else {
+       allTags[tag]++;
+     }
       /* END LOOP: for each tag */
     }
     /* insert HTML of all the links into the tags wrapper */
     tagsWrapper.innerHTML = html;
     /* END LOOP: for every article: */
   }
+  /* [NEW] find list of tags in right column */
+  const tagList = document.querySelector('.tags');
+  /* [NEW] create variable for all links in HTML code */
+  let allTagsHTML = '';
+  /* [NEW] START LOOP: for each tag in allTags:*/
+  for (let tag in allTags) {
+    /* [NEW] generate code of a link and add it to allTagsHTML */
+    allTagsHTML += tag + ' (' + allTags[tag] + ')';
+  }
+  /* [NEW] END LOOP: for each tag in allTags: */
+
+  /* [NEW] add html from allTagsHTML to tagList */
+  tagList.innerHTML = allTagsHTML;
 }
 
 generateTags();
