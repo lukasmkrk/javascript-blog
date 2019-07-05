@@ -60,6 +60,16 @@ function generateTitleLinks(customSelector = '') {
 
 generateTitleLinks();
 
+function calculateTagsParams(tags){
+  for(let tag in tags){
+    if(tags[tag] > params.max){
+      params.max = tags[tag];
+    }
+  }
+  return params;  //czy calculateTagsParams = tags ??//
+}
+  console.log(tag + ' is used ' + tags[tag] + ' times');
+
 function generateTags() {
   /* [NEW] create a new variable allTags with an empty object */
   let allTags = {};
@@ -96,6 +106,11 @@ function generateTags() {
   }
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector('.tags');
+
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:', tagsParams);
+}
+
   /* [NEW] create variable for all links in HTML code */
   let allTagsHTML = '';
   /* [NEW] START LOOP: for each tag in allTags:*/
