@@ -60,7 +60,7 @@ function generateTitleLinks(customSelector = '') {
 
 generateTitleLinks();
 
-function calculateTagsParams(tags){
+function calculateTagsParams(allTags){
   for(let tag in tags){
     if(tags[tag] > params.max){
       params.max = tags[tag];
